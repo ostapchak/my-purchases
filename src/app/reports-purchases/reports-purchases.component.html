@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="example-form" [formGroup]="form" (ngSubmit)="createReport()">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Year" formControlName="year" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Currency</mat-label>
+            <mat-select value="UAH" formControlName="currency">
+              <mat-option value="UAH" >UAH</mat-option>
+              <mat-option value="USD">USD</mat-option>
+              <mat-option value="EUR">EUR</mat-option>
+            </mat-select>
+          </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Create report</button>
+  </form>
+  <mat-list >
+    <mat-list-item *ngFor="let item of reports" >
+      <mat-icon mat-list-icon>date_range</mat-icon>
+      <h4 mat-line>{{item.year}} Year</h4>
+      <h3 mat-line>{{item.fullPrice | number:minIntegerDigits}} {{item.currency}}</h3>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  </div>
+</div>
